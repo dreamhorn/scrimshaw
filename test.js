@@ -57,6 +57,13 @@ describe('blueprint', function () {
       expect(result.bar).to.be.within(5, 15);
       expect(result.incr).to.be.undefined;
     });
+
+    it('should generate an object from a blueprint extended by overrides', function () {
+      var result = TestBlueprint.generate({foo: 5});
+      expect(result.foo).to.equal(5);
+      expect(result.bar).to.equal(10);
+      expect(result.incr).to.be.undefined;
+    });
   });
 
 });
