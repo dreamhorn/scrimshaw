@@ -6,6 +6,7 @@ Magical blueprints for procedural generation of content.
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
+- [Acknowledgements](#acknowledgements)
 
 
 Installing
@@ -37,12 +38,12 @@ Reference
 fact, by itself, the base Scrimshaw won't do very much at all.
 
 
-- [The Scrimshaw object](#scrimshaw)—Overview and Usage
-- [#create()](#create)—for copying a Scrimshaw
-- [#export()](#export)—for reifying a particular Scrimshaw
-- [#extend()](#extend)—for subclassing a Scrimshaw
-- [#generate()](#generate)—for reifying a generic Scrimshaw
-- [#get()](#get)—for accessing static and dynamic attributes
+- [The `Scrimshaw` object](#scrimshaw)—Overview and Usage
+- [`#create()`](#create)—for copying a Scrimshaw
+- [`#export()`](#export)—for reifying a particular Scrimshaw
+- [`#extend()`](#extend)—for subclassing a Scrimshaw
+- [`#generate()`](#generate)—for reifying a generic Scrimshaw
+- [`#get()`](#get)—for accessing static and dynamic attributes
 
 
 ### Scrimshaw
