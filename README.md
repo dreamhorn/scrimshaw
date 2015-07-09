@@ -153,11 +153,9 @@ result of `#make_type`. `#export()` is idempotent: because `#get()` caches the
 results of dynamic attributes, subsequent calls to `#export()` should produce
 identical results.
 
-If an `overrides` object is provided to `#export()`, any exported names that
-are present on the `overrides` object will be taken from there instead. Keep in
-mind that `#get()` still evaluates attributes from the blueprint itself:
-`overrides` will not affect any dependent calculations in dynamic
-attributes. If this is desired, `#extend()` the blueprint instead.
+If an `overrides` object is provided to `#export()`, the attributes will be
+exported from an extended version of the blueprint instead. This allows
+dependent dynamic attributes to be affected by the overrides.
 
 `#export(overrides)` should be idempotent for subsequent calls with identical
 overrides.
@@ -214,6 +212,32 @@ fresh cache, and ignoring any existing cache on this blueprint.
     var bar = RandomBlueprint.generate();
     var baz = RandomBlueprint.generate();
     bar.foo != baz.foo;
+
+If `overrides` are provided to `#generate()`, the blueprint will be extended
+with the overrides before exporting its attributes. This allows us to specify,
+for instance, a custom randomizer object at generation time:
+
+    var RandomBlueprint = Blueprint.extend({
+      export_attributes: [
+        'foo'
+      ],
+
+      foo: function () {
+        // Note: `ivoire` will be undefined on the unmodified blueprint.
+        ivoire = this.get('ivoire');
+        return ivoire.natural();
+      }
+    });
+
+    // Subsequent calls to `#generate()` produce fresh instances.  Supplying
+    // the `ivoire` object in the overrides satisfies the dependency in `foo`.
+    var bar = RandomBlueprint.generate({ivoire: new Ivoire({seed: 42})});
+    var baz = RandomBlueprint.generate({ivoire: new Ivoire({seed: 43})});
+
+    // If the same seed were used for both calls, the resulting instances would
+    // have been the same:
+    bar.foo != baz.foo;
+
 
 
 ### #get(name)

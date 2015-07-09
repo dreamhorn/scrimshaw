@@ -31,26 +31,25 @@ Blueprint = {
     return value
 
   export: (overrides) ->
-    if overrides is undefined
-      overrides = {}
+    if overrides is undefined or _.isEmpty overrides
+      bp = this
+    else
+      bp = this.extend(overrides)
 
     # If a function, it should be a function that returns an instantiated object.
-    if _.isFunction this.make_type
-      result = this.make_type()
+    if _.isFunction bp.make_type
+      result = bp.make_type()
     else
-      result = Object.create this.make_type
+      result = Object.create bp.make_type
 
-    for name in this.export_attributes
-      if name of overrides
-        result[name] = overrides[name]
-      else
-        result[name] = this.get name
+    for name in bp.export_attributes
+      result[name] = bp.get name
 
     return result
 
   generate: (overrides) ->
     bp = this.create()
-    return bp.export overrides
+    return bp.export()
 
 }
 
