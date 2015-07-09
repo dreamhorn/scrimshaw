@@ -37,12 +37,12 @@ Reference
 fact, by itself, the base Blueprint won't do very much at all.
 
 
-- [The Blueprint object](#blueprint)
-- [#create()](#create)
-- [#export()](#export)
-- [#extend()](#extend)
-- [#generate()](#generate)
-- [#get()](#get)
+- [The Blueprint object](#blueprint)—Overview and Usage
+- [#create()](#create)—for copying a Blueprint
+- [#export()](#export)—for reifying a particular Blueprint
+- [#extend()](#extend)—for subclassing a Blueprint
+- [#generate()](#generate)—for reifying a generic Blueprint
+- [#get()](#get)—for accessing static and dynamic attributes
 
 
 ### Blueprint
