@@ -3,6 +3,10 @@ blueprint
 
 Magical blueprints for procedural generation of content.
 
+- [Installing](#installing)
+- [Getting Started](#getting-started)
+- [Reference](#reference)
+
 
 Installing
 ----------
@@ -31,6 +35,14 @@ Reference
 
 `blueprint` provides a simple interface that is designed to be extensible. In
 fact, by itself, the base Blueprint won't do very much at all.
+
+
+- [The Blueprint object](#blueprint)
+- [#create()](#create)
+- [#export()](#export)
+- [#extend()](#extend)
+- [#generate()](#generate)
+- [#get()](#get)
 
 
 ### Blueprint
