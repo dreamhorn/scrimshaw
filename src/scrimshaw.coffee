@@ -2,7 +2,7 @@
 _ = require('lodash')
 
 
-Blueprint = {
+Scrimshaw = {
   make_type: {}
 
   export_attributes: []
@@ -10,14 +10,14 @@ Blueprint = {
   cache: {}
 
   create: () ->
-    bp = Object.create this
-    bp.cache = {}
-    return bp
+    scsh = Object.create this
+    scsh.cache = {}
+    return scsh
 
   extend: (body) ->
-    bp = this.create()
-    _.assign bp, body
-    return bp
+    scsh = this.create()
+    _.assign scsh, body
+    return scsh
 
   get: (name) ->
     if name of @cache
@@ -32,26 +32,26 @@ Blueprint = {
 
   export: (overrides) ->
     if overrides is undefined or _.isEmpty overrides
-      bp = this
+      scsh = this
     else
-      bp = this.extend(overrides)
+      scsh = this.extend(overrides)
 
     # If a function, it should be a function that returns an instantiated object.
-    if _.isFunction bp.make_type
-      result = bp.make_type()
+    if _.isFunction scsh.make_type
+      result = scsh.make_type()
     else
-      result = Object.create bp.make_type
+      result = Object.create scsh.make_type
 
-    for name in bp.export_attributes
-      result[name] = bp.get name
+    for name in scsh.export_attributes
+      result[name] = scsh.get name
 
     return result
 
   generate: (overrides) ->
-    bp = this.create()
-    return bp.export(overrides)
+    scsh = this.create()
+    return scsh.export(overrides)
 
 }
 
 
-module.exports = Blueprint
+module.exports = Scrimshaw
