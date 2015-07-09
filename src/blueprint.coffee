@@ -49,7 +49,7 @@ Blueprint = {
 
   generate: (overrides) ->
     bp = this.create()
-    return bp.export()
+    return bp.export(overrides)
 
 }
 
