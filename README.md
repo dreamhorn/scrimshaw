@@ -3,6 +3,8 @@ scrimshaw
 
 Magical blueprints for procedural generation of content.
 
+[![Build Status](https://travis-ci.org/dreamhorn/scrimshaw.svg)](https://travis-ci.org/dreamhorn/scrimshaw)
+
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
